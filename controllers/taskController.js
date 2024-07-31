@@ -1,5 +1,5 @@
-const Task = require("../models/Task");
-const User = require("../models/User");
+const Task = require("../models/task");
+const User = require("../models/user");
 class TaskController {
   async getTask(req, res) {
     // get user id

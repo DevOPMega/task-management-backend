@@ -3,7 +3,7 @@ const {
     encryptPassword,
     comparePassword
 } = require("../utils/hashPassword")
-const User = require("../models/User");
+const User = require("../models/user");
 const { createToken } = require("../utils/token");
 
 class AuthController {
