@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 // Define the task schema
 const taskSchema = new mongoose.Schema({
+    uid: {
+        type: String
+    },
     title: {
         type: String,
         required: true,
@@ -23,8 +26,10 @@ const taskSchema = new mongoose.Schema({
         default: 'Low'
     },
     deadline: {
-        type: Date,
+        type: Date, 
     },
+}, {
+    timestamps: true
 });
 
 // Create the task model

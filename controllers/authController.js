@@ -4,7 +4,7 @@ const {
     comparePassword
 } = require("../utils/hashPassword")
 const User = require("../models/User");
-const createToken = require("../utils/createToken");
+const { createToken } = require("../utils/token");
 
 class AuthController {
     async register(req, res) {
@@ -46,9 +46,12 @@ class AuthController {
                 uid: newUser.uid
             });
             res.cookie(
-                "access-token",
+                "access_token",
                 accessToken, 
                 {
+                    httpOnly: true,
+                    path: "/",
+                    sameSite: "lax",
                     maxAge: 8*24*60*60*1000 // 8 days
                 }
             )
@@ -97,9 +100,11 @@ class AuthController {
             uid: user.uid
         });           
         res.cookie(
-            "access-token",
+            "access_token",
             accessToken, 
             {
+                httpOnly: true,
+                sameSite: "lax",
                 maxAge: 8*24*60*60*1000 // 8 days
             }
         )
