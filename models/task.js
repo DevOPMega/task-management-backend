@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Define the task schema
+// Task Schema
 const taskSchema = new mongoose.Schema({
     uid: {
         type: String
