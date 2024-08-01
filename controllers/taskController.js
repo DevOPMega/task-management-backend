@@ -47,7 +47,7 @@ class TaskController {
     } catch (error) {
       console.log("Error in add task");
       console.log("Error: ", error);
-      return res.json({
+      return res.status(400).json({
         message: "Error in Creating Task",
       });
     }
