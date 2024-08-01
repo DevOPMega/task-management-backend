@@ -41,7 +41,7 @@ class AuthController {
       res.cookie("access_token", accessToken, {
         httpOnly: true,
         path: "/",
-        sameSite: "None",
+        sameSite: process.env.SAMESITE,
         secure: true,
         maxAge: 8 * 24 * 60 * 60 * 1000, // 8 days
       });
@@ -85,9 +85,8 @@ class AuthController {
       uid: user.uid,
     });
     res.cookie("access_token", accessToken, {
-      domain: "http://localhost:8080",
       httpOnly: true,
-      sameSite: "None",
+      sameSite: process.env.SAMESITE,
       secure: true,
       maxAge: 8 * 24 * 60 * 60 * 1000, // 8 days
     });

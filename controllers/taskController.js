@@ -6,11 +6,11 @@ class TaskController {
     // get user id
     const uid = req.uid;
     try {
-      const username = await User.findOne({ uid }, "name").exec();
+      const userName = await User.findOne({ uid }, "name").exec();
       const userTasks = await Task.find({ uid });
       console.log("fetching task...");
       return res.status(200).json({
-        username,
+        userName,
         userTasks,
       });
     } catch (error) {
