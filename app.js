@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 const corsOptions = {
-    origin: "https://taskhelper.vercel.app/", //included origin as true
+    origin: process.env.REQUEST_ORIGIN, //included origin as true
     methods: "GET,POST,DELETE,PUT,PATCH,HEAD",
     credentials: true, //included credentials as true
 };

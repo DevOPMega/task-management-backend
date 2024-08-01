@@ -66,6 +66,7 @@ class AuthController {
     }
     async login(req, res) {
         // collect data 
+        console.log("login request...")
         const {
             email,
             password

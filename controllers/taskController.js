@@ -1,13 +1,14 @@
 const Task = require("../models/task");
 const User = require("../models/user");
+
 class TaskController {
   async getTask(req, res) {
     // get user id
     const uid = req.uid;
     try {
       const username = await User.findOne({ uid }, "name").exec();
-      console.log(username);
       const userTasks = await Task.find({ uid });
+      console.log("fetching task...");
       return res.status(200).json({
         username,
         userTasks,
