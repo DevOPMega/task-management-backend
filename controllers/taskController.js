@@ -6,18 +6,17 @@ class TaskController {
     // get user id
     const uid = req.uid;
     try {
-      const userName = await User.findOne({ uid }, "name").exec();
+      const user = await User.findOne({ uid }, "name").exec();
       const userTasks = await Task.find({ uid });
       console.log("fetching task...");
       return res.status(200).json({
-        userName,
+        user,
         userTasks,
       });
     } catch (error) {
-      console.log("error in get task");
-      console.log("error: ", error);
+      console.log("Error Get Task ", error);
       return res.status(500).json({
-        message: "failed to get task",
+        error: "failed to get task",
       });
     }
   }
@@ -27,7 +26,7 @@ class TaskController {
     // validate the data
     if (!title || !status) {
       return res.status(400).json({
-        message: "Lack of Suffecient Data",
+        error: "Lack of Suffecient Data",
       });
     }
     // save the data
@@ -45,10 +44,9 @@ class TaskController {
         message: "Task Created Successfully",
       });
     } catch (error) {
-      console.log("Error in add task");
-      console.log("Error: ", error);
+      console.log("Error Post Task ", error);
       return res.status(400).json({
-        message: "Error in Creating Task",
+        error: "Error in Creating Task",
       });
     }
   }

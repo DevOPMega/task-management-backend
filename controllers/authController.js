@@ -42,7 +42,7 @@ class AuthController {
         httpOnly: true,
         path: "/",
         sameSite: process.env.SAMESITE,
-        secure: true,
+        secure: process.env.NODE_ENV === "production",
         maxAge: 8 * 24 * 60 * 60 * 1000, // 8 days
       });
       res.status(200).json({
@@ -87,7 +87,7 @@ class AuthController {
     res.cookie("access_token", accessToken, {
       httpOnly: true,
       sameSite: process.env.SAMESITE,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
       maxAge: 8 * 24 * 60 * 60 * 1000, // 8 days
     });
     res.status(200).json({
